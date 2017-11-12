@@ -1,5 +1,9 @@
-from django.http import HttpResponse
+from rest_framework.viewsets import ModelViewSet
+
+from rest_api.models import Book
+from rest_api.serializers import BookSerializer
 
 
-def index(request):
-    return HttpResponse('yup that\'s a request', status=201)
+class BookViewSet(ModelViewSet):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer

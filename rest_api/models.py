@@ -1,3 +1,9 @@
 from django.db import models
 
-# Create your models here.
+
+# AJK TODO make an abstract model storing created/updated/archived timestamps
+class Book(models.Model):
+    title = models.CharField(max_length=1024)
+    author = models.CharField(max_length=1024, blank=True)
+    location = models.PositiveIntegerField(null=True)
+    rating = models.PositiveSmallIntegerField(null=True)

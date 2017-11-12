@@ -24,7 +24,5 @@ class BookViewSet(ModelViewSet):
             obj.title = data['title']
         if 'author' in data:
             obj.author = data['author']
-        if 'rating' in data:
-            obj.rating = data['rating']
         obj.save()
         return Response('book updated', status=200)

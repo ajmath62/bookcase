@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core'
 import { Book } from '../book'
+import { BOOKS } from '../mock-books'
 
 @Component({
   selector: 'app-books',
@@ -8,12 +9,7 @@ import { Book } from '../book'
   encapsulation: ViewEncapsulation.None
 })
 export class BooksComponent implements OnInit {
-  book: Book = {
-    id: 1,
-    title: 'Anne of Green Gables',
-    author: 'L. M. Montgomery',
-    location: 32767
-  }
+  books: Book[] = BOOKS
 
   constructor() { }
 

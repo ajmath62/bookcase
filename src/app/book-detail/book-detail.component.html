@@ -1,7 +1,8 @@
 <div *ngIf='book'>
-  <p>{{ book.title }}</p>
-  <p>By {{ book.author }}</p>
-  <p>Found in location {{ book.location }}</p>
-  <p>Rated {{ book.rating }}/5</p>
-  <label>Please rate: <input [(ngModel)]='book.rating'/></label>
+  <label>Title: <input [(ngModel)]='book.title'/></label><br/>
+  <label>Author: <input [(ngModel)]='book.author'/></label><br/>
+  <p>Location: {{ book.location }} </p>
+  <label>Rating: <input [(ngModel)]='book.rating'/></label><br/>
+  <br/>
+  <button (click)='save()'>Save changes</button>
 </div>

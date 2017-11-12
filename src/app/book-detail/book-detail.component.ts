@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core'
 
 import { Book } from '../book'
+import { BookService} from '../book.service'
 
 @Component({
   selector: 'app-book-detail',
@@ -11,9 +12,13 @@ import { Book } from '../book'
 export class BookDetailComponent implements OnInit {
   @Input() book: Book
 
-  constructor() { }
+  constructor(private bookService: BookService) { }
 
   ngOnInit() {
+  }
+
+  save(): void {
+    this.bookService.updateBook(this.book).subscribe(() => this.clear())
   }
 
 }

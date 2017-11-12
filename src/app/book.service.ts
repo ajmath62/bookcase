@@ -7,11 +7,20 @@ import { Book } from './book'
 
 @Injectable()
 export class BookService {
-  private bookUrl: string = 'http://localhost:8000/api/v1/books/'
+  private baseUrl: string = 'http://localhost:8000/api/v1/books/'
+  private listUrl: string = this.baseUrl
+  private detailUrl: (id: number) => string = (id: number) => `${this.baseUrl}${id}/`
+  private createUrl: string = this.baseUrl
+  private editUrl: (id: number) => string = (id: number) => `${this.detailUrl(id)}edit/`
 
   constructor(private http: HttpClient) { }
+
   getAllBooks(): Observable<Book[]> {
-    return this.http.get<Book[]>(this.bookUrl)
+    return this.http.get<Book[]>(this.listUrl)
+  }
+
+  updateBook(book: Book): Observable<any> {
+    return this.http.post(this.editUrl(book.id), book)
   }
 
 }

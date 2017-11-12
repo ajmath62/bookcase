@@ -1,0 +1,14 @@
+# Database ORM
+django==1.11.7
+
+# Extensions to django e.g. shell_plus
+django-extensions==1.9.7
+
+# Used for making API endpoints
+djangorestframework==3.7.3
+
+# Makes using a python shell better
+ipython==6.2.1
+
+# Enables using runserver_plus
+Werkzeug==0.12.2

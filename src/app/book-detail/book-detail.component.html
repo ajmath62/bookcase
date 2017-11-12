@@ -1,0 +1,7 @@
+<div *ngIf='book'>
+  <p>{{ book.title }}</p>
+  <p>By {{ book.author }}</p>
+  <p>Found in location {{ book.location }}</p>
+  <p>Rated {{ book.rating }}/5</p>
+  <label>Please rate: <input [(ngModel)]='book.rating'/></label>
+</div>

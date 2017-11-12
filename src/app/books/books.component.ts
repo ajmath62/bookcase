@@ -10,6 +10,11 @@ import { BOOKS } from '../mock-books'
 })
 export class BooksComponent implements OnInit {
   books: Book[] = BOOKS
+  selectedBook: Book
+
+  onSelect(book: Book): void {
+    this.selectedBook = book
+  }
 
   constructor() { }
 

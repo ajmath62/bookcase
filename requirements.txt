@@ -1,6 +1,9 @@
 # Database ORM
 django==1.11.7
 
+# Allows cross-origin resource sharing (CORS)
+django-cors-headers==2.1.0
+
 # Extensions to django e.g. shell_plus
 django-extensions==1.9.7
 

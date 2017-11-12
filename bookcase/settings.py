@@ -41,11 +41,14 @@ INSTALLED_APPS = [
     'django_extensions',
     'rest_framework',
 
+    'corsheaders',
+
     'rest_api.apps.RestApiConfig',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -123,3 +126,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+# Settings for CORS
+CORS_ORIGIN_WHITELIST = (
+  'localhost:4200',
+)

@@ -11,10 +11,15 @@ import { BookService} from '../book.service'
 })
 export class BookDetailComponent implements OnInit {
   @Input() book: Book
+  @Input() mode: [string]
 
   constructor(private bookService: BookService) { }
 
   ngOnInit() {
+  }
+
+  clear(): void {
+    this.mode[0] = 'list'
   }
 
   save(): void {

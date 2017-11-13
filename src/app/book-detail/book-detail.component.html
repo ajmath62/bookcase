@@ -1,7 +1,8 @@
-<div *ngIf='book'>
+<div *ngIf='mode[0] == "detail"'>
   <label>Title: <input [(ngModel)]='book.title'/></label><br/>
   <label>Author: <input [(ngModel)]='book.author'/></label><br/>
   <p>Location: {{ book.location }} </p>
   <br/>
   <button (click)='save()'>Save changes</button>
+  <button (click)='clear()'>Cancel</button>
 </div>

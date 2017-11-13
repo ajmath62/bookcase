@@ -5,4 +5,4 @@
   <p (click)='onSelect(book)'>{{ book.title | uppercase}}</p>
   </li>
 </ul>
-<app-book-detail [book]='selectedBook'></app-book-detail>
+<app-book-detail [book]='selectedBook' [mode]='mode'></app-book-detail>

@@ -11,9 +11,11 @@ import { BookService } from '../book.service'
 export class BooksComponent implements OnInit {
   books: Book[]
   selectedBook: Book
+  mode: [string] = ['list']
 
   onSelect(book: Book): void {
     this.selectedBook = book
+    this.mode[0] = 'detail'
   }
 
   getAllBooks(): void {

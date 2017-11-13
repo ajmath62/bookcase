@@ -26,6 +26,11 @@ export class BooksComponent implements OnInit {
     this.mode[0] = 'detail'
   }
 
+  newBook(book: Book): void {
+    this.books.push(book)
+    this.mode[0] = 'list'
+  }
+
   ngOnInit() {
     this.getAllBooks()
   }

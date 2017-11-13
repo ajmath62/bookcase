@@ -8,6 +8,7 @@ import { BooksComponent } from './books/books.component'
 import { BookDetailComponent } from './book-detail/book-detail.component'
 import { BookService } from './book.service'
 import { BookListComponent } from './book-list/book-list.component'
+import { BookCreateComponent } from './book-create/book-create.component'
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { BookListComponent } from './book-list/book-list.component'
     AppComponent,
     BooksComponent,
     BookDetailComponent,
-    BookListComponent
+    BookListComponent,
+    BookCreateComponent
   ],
   imports: [
     BrowserModule,

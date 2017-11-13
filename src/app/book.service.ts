@@ -12,6 +12,7 @@ export class BookService {
   private detailUrl: (id: number) => string = (id: number) => `${this.baseUrl}${id}/`
   private createUrl: string = this.baseUrl
   private editUrl: (id: number) => string = (id: number) => `${this.detailUrl(id)}edit/`
+  private deleteUrl: (id: number) => string = (id: number) => `${this.detailUrl(id)}delete/`
 
   constructor(private http: HttpClient) { }
 
@@ -25,6 +26,10 @@ export class BookService {
 
   createBook(book: Book): Observable<Book> {
     return this.http.post<Book>(this.createUrl, book)
+  }
+
+  deleteBook(id: number): Observable<any> {
+    return this.http.post(this.deleteUrl(id), {})
   }
 
 }

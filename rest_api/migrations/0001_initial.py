@@ -20,6 +20,7 @@ class Migration(migrations.Migration):
                 ('title', models.CharField(max_length=1024)),
                 ('author', models.CharField(blank=True, max_length=1024)),
                 ('location', models.PositiveIntegerField(null=True)),
+                ('archived', models.BooleanField(blank=True, default=True)),
             ],
         ),
     ]

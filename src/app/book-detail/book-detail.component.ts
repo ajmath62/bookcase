@@ -18,12 +18,17 @@ export class BookDetailComponent implements OnInit {
   ngOnInit() {
   }
 
-  clear(): void {
+  exit(): void {
     this.mode[0] = 'list'
   }
 
   save(): void {
-    this.bookService.updateBook(this.book).subscribe(() => this.clear())
+    this.bookService.updateBook(this.book).subscribe(() => this.exit())
+  }
+
+  remove(): void {
+    // AJK TODO make this disappear from the list w/o refreshing
+    this.bookService.deleteBook(this.book.id).subscribe(() => this.exit())
   }
 
 }

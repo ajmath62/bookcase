@@ -8,7 +8,7 @@ from rest_api.serializers import BookSerializer
 
 
 class BookViewSet(ModelViewSet):
-    queryset = Book.objects.all()
+    queryset = Book.objects.filter(archived=False)
     serializer_class = BookSerializer
 
     @detail_route(methods=['POST'])
@@ -26,3 +26,13 @@ class BookViewSet(ModelViewSet):
             obj.author = data['author']
         obj.save()
         return Response('book updated', status=200)
+
+    @detail_route(methods=['POST'])
+    def delete(self, request, pk=None):
+        obj_qs = self.queryset.filter(pk=pk)
+        if not obj_qs.exists():
+            return Response('No object found with that ID', status=status.HTTP_404_NOT_FOUND)
+
+        obj = obj_qs.get()
+        obj.archive()
+        return Response('book deleted', status=200)

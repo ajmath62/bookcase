@@ -1,8 +1,9 @@
 <div *ngIf='mode[0] == "add"'>
   <form (ngSubmit)='create()'>
-    <label>Title<input [(ngModel)]='newBook.title' required/></label><br/>
-    <label>Author<input [(ngModel)]='newBook.author'/></label><br/>
-    <label>Location<input [(ngModel)]='newBook.location'/></label><br/>
+    <!--AJK TODO get frontend validation to work-->
+    <label>Title<input [(ngModel)]='newBook.title' name='title' required/></label><br/>
+    <label>Author<input [(ngModel)]='newBook.author' name='author'/></label><br/>
+    <label>Location<input [(ngModel)]='newBook.location' name='location'/></label><br/>
     <button type='submit'>Add</button>
     <button (click)='mode[0] = "list"'>Cancel</button>
   </form>

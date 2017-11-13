@@ -1,3 +1,3 @@
 <app-book-list [books]='books' [mode]='mode' (selection)='selectBook($event)'></app-book-list>
 <app-book-detail [book]='selectedBook' [mode]='mode'></app-book-detail>
-<app-book-create [mode]='mode' (create)='newBook($event)'></app-book-create>
+<app-book-create [mode]='mode' (book)='newBook($event)'></app-book-create>

@@ -1,8 +1,2 @@
-<h2>Number of books: {{ books.length }}</h2>
-<h2>These are the books:</h2>
-<ul>
-  <li *ngFor='let book of books'>
-  <p (click)='onSelect(book)'>{{ book.title | uppercase}}</p>
-  </li>
-</ul>
+<app-book-list [books]='books' [mode]='mode' (selection)='selectBook($event)'></app-book-list>
 <app-book-detail [book]='selectedBook' [mode]='mode'></app-book-detail>

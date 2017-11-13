@@ -13,10 +13,7 @@ export class BooksComponent implements OnInit {
   selectedBook: Book
   mode: [string] = ['list']
 
-  onSelect(book: Book): void {
-    this.selectedBook = book
-    this.mode[0] = 'detail'
-  }
+  constructor(private bookService: BookService) { }
 
   getAllBooks(): void {
     // Get all books from the book service, then use Observable.subscribe to
@@ -24,7 +21,10 @@ export class BooksComponent implements OnInit {
     this.bookService.getAllBooks().subscribe(books => this.books = books)
   }
 
-  constructor(private bookService: BookService) { }
+  selectBook(book: Book): void {
+    this.selectedBook = book
+    this.mode[0] = 'detail'
+  }
 
   ngOnInit() {
     this.getAllBooks()

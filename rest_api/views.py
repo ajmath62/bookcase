@@ -8,7 +8,7 @@ from rest_api.serializers import BookSerializer
 
 
 class BookViewSet(ModelViewSet):
-    queryset = Book.objects.filter(archived=False)
+    queryset = Book.get_active()
     serializer_class = BookSerializer
 
     @detail_route(methods=['POST'])

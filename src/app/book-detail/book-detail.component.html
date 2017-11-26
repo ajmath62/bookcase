@@ -1,10 +1,8 @@
-<div *ngIf='mode[0] == "detail"'>
-  <button (click)='save()'>Save changes</button>
-  <button (click)='exit()'>Cancel</button>
-  <br/><br/>
-  <label>Title: <input [(ngModel)]='book.title'/></label><br/>
-  <label>Author: <input [(ngModel)]='book.author'/></label><br/>
-  <p>Location: {{ book.location }} </p>
-  <br/>
-  <button (click)='remove()'>Delete book</button>
-</div>
+<button (click)='save()'>Save changes</button>
+<button (click)='cancel()'>Cancel</button>
+<br/><br/>
+<label>Title: <input [(ngModel)]='book.title'/></label><br/>
+<label>Author: <input [(ngModel)]='book.author'/></label><br/>
+<p>Location: {{ book.location }}</p>
+<br/>
+<button (click)='remove()'>Remove book</button>

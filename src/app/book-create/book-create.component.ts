@@ -10,7 +10,7 @@ import { BookService } from '../book.service'
   encapsulation: ViewEncapsulation.None
 })
 export class BookCreateComponent implements OnInit {
-  @Input() mode: [string]
+  @Output() mode = new EventEmitter<string>()
   @Output() book = new EventEmitter<Book>()
 
   newBook = new Book('')

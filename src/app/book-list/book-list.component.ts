@@ -10,13 +10,13 @@ import { Book } from '../book'
 })
 export class BookListComponent implements OnInit {
   @Input() books: Book[]
-  @Input() mode: [string]
-  @Output() selection = new EventEmitter<Book>()
+  @Output() mode = new EventEmitter<string>()
+  @Output() selection = new EventEmitter<number>()
 
   constructor() { }
 
-  onSelect(book: Book): void {
-    this.selection.emit(book)
+  onSelect(index: number): void {
+    this.selection.emit(index)
   }
 
   ngOnInit() {

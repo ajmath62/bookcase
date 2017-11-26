@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core'
+import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core'
 
 import { Book } from '../book'
 import { BookService} from '../book.service'
@@ -11,24 +11,23 @@ import { BookService} from '../book.service'
 })
 export class BookDetailComponent implements OnInit {
   @Input() book: Book
-  @Input() mode: [string]
+  @Output() action = new EventEmitter<[string, Book]>()
 
   constructor(private bookService: BookService) { }
 
   ngOnInit() {
   }
 
-  exit(): void {
-    this.mode[0] = 'list'
+  cancel(): void {
+    this.action.emit(['cancel', null])
   }
 
   save(): void {
-    this.bookService.updateBook(this.book).subscribe(() => this.exit())
+    this.action.emit(['save', this.book])
   }
 
   remove(): void {
-    // AJK TODO make this disappear from the list w/o refreshing
-    this.bookService.deleteBook(this.book.id).subscribe(() => this.exit())
+    this.action.emit(['remove', this.book])
   }
 
 }

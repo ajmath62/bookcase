@@ -11,7 +11,8 @@ import { BookService } from '../book.service'
 export class BooksComponent implements OnInit {
   books: Book[]
   selectedBook: Book
-  mode: [string] = ['list']
+  selectedIndex: number
+  mode: string = 'list'
 
   constructor(private bookService: BookService) { }
 
@@ -21,14 +22,43 @@ export class BooksComponent implements OnInit {
     this.bookService.getAllBooks().subscribe(books => this.books = books)
   }
 
-  selectBook(book: Book): void {
-    this.selectedBook = book
-    this.mode[0] = 'detail'
+  selectBook(index: number): void {
+    let book: Book = this.books[index]
+    let bookCopy: Book = {
+      id: book.id,
+      title: book.title,
+      author: book.author,
+      location: book.location
+    }
+    this.selectedBook = bookCopy
+    this.selectedIndex = index
+    this.mode = 'detail'
   }
 
   newBook(book: Book): void {
     this.books.push(book)
-    this.mode[0] = 'list'
+    this.mode = 'list'
+  }
+
+  detailHandler($event: [string, Book]): void {
+    let action: string = $event[0]
+    let book: Book = $event[1]
+    let storedBook: Book = this.books[this.selectedIndex]
+    switch (action) {
+      case 'save':
+        this.bookService.updateBook(book).subscribe(() => this.mode = 'list')
+        storedBook.title = book.title
+        storedBook.author = book.author
+        break;
+      case 'remove':
+        this.bookService.deleteBook(storedBook.id).subscribe()
+        // Remove the indexed book from the list of books
+        this.books = this.books.slice(0, this.selectedIndex).concat(this.books.slice(this.selectedIndex+1))
+        break;
+      default:
+        break;
+    }
+    this.mode = 'list'
   }
 
   ngOnInit() {

@@ -9,9 +9,9 @@ import { BookService } from '../book.service'
   encapsulation: ViewEncapsulation.None
 })
 export class BooksComponent implements OnInit {
-  books: Book[]
-  selectedBook: Book
-  selectedIndex: number
+  books: Book[] = []
+  selectedBook: Book = null
+  selectedIndex: number = null
   mode: string = 'list'
 
   constructor(private bookService: BookService) { }
@@ -22,7 +22,15 @@ export class BooksComponent implements OnInit {
     this.bookService.getAllBooks().subscribe(books => this.books = books)
   }
 
-  selectBook(index: number): void {
+  deselect(): void {
+    this.mode = 'list'
+    this.selectedBook = null
+    this.selectedIndex = null
+  }
+
+  listHandler($event: [string, number]): void {
+    let action: string = $event[0]
+    let index: number = $event[1]
     let book: Book = this.books[index]
     let bookCopy: Book = {
       id: book.id,
@@ -30,9 +38,26 @@ export class BooksComponent implements OnInit {
       author: book.author,
       location: book.location
     }
-    this.selectedBook = bookCopy
-    this.selectedIndex = index
-    this.mode = 'detail'
+    switch (action) {
+      case 'select':
+        this.selectedBook = bookCopy
+        this.selectedIndex = index
+        this.mode = 'detail'
+        break;
+      case 'move':
+        if (index === this.selectedIndex) break;
+        else if (index < this.selectedIndex) {
+          // AJK TODO multiline this
+          this.books = this.books.slice(0, index).concat(this.books[this.selectedIndex]).concat(this.books.slice(index, this.selectedIndex)).concat(this.books.slice(this.selectedIndex+1))
+        }
+        else {
+          this.books = this.books.slice(0, this.selectedIndex).concat(this.books.slice(this.selectedIndex+1, index)).concat(this.books[this.selectedIndex]).concat(this.books.slice(index))
+        }
+        this.deselect()
+        break;
+      default:
+        break;
+    }
   }
 
   newBook(book: Book): void {
@@ -58,9 +83,7 @@ export class BooksComponent implements OnInit {
       default:
         break;
     }
-    this.mode = 'list'
-    this.selectedBook = null
-    this.selectedIndex = null
+    this.deselect()
   }
 
   ngOnInit() {

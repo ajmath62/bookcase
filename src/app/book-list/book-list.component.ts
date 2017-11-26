@@ -12,12 +12,14 @@ export class BookListComponent implements OnInit {
   @Input() books: Book[]
   @Input() selection: number
   @Output() mode = new EventEmitter<string>()
-  @Output() selectionChange = new EventEmitter<number>()
+  @Output() selectionChange = new EventEmitter<[string, number]>()
+  clickMode: string
 
   constructor() { }
 
   onSelect(index: number): void {
-    this.selectionChange.emit(index)
+    if (this.selection === null) this.clickMode = 'select'
+    this.selectionChange.emit([this.clickMode, index])
   }
 
   // AJK TODO get rid of unnecessary code like this

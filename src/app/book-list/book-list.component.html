@@ -13,4 +13,9 @@
     <h2>There are no books. Click below to add a new book.</h2>
   </div>
   <button (click)='mode.emit("add")'>Add book</button>
+  <!--Toggle between select and move mode-->
+  <span *ngIf='selection!==null'>
+    <button *ngIf='clickMode==="select"' (click)='clickMode = "move"'>Move book</button>
+    <button *ngIf='clickMode==="move"' (click)='clickMode = "select"'>Select book</button>
+  </span>
 </span>

@@ -8,7 +8,7 @@ from rest_api.serializers import BookSerializer
 
 
 class BookViewSet(ModelViewSet):
-    queryset = Book.get_active()
+    queryset = Book.get_active().order_by('location')
     serializer_class = BookSerializer
 
     @detail_route(methods=['POST'])

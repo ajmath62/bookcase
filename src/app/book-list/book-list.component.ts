@@ -10,15 +10,17 @@ import { Book } from '../book'
 })
 export class BookListComponent implements OnInit {
   @Input() books: Book[]
+  @Input() selection: number
   @Output() mode = new EventEmitter<string>()
-  @Output() selection = new EventEmitter<number>()
+  @Output() selectionChange = new EventEmitter<number>()
 
   constructor() { }
 
   onSelect(index: number): void {
-    this.selection.emit(index)
+    this.selectionChange.emit(index)
   }
 
+  // AJK TODO get rid of unnecessary code like this
   ngOnInit() {
   }
 

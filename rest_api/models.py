@@ -19,6 +19,9 @@ class AbstractModel(models.Model):
     def get_active(cls):
         return cls.objects.filter(archived_on__isnull=True)
     
+    def __str__(self):
+        return 'ID {:d}'.format(self.pk)
+    
     class Meta:
         abstract = True
 
@@ -26,4 +29,11 @@ class AbstractModel(models.Model):
 class Book(AbstractModel):
     title = models.CharField(max_length=1024)
     author = models.CharField(max_length=1024, blank=True)
-    location = models.PositiveIntegerField(null=True)
+    location = models.IntegerField(null=True, unique=True, db_index=True)
+    
+    def __str__(self):
+        if len(self.title) < 15:
+            title = self.title
+        else:
+            title = self.title[:12] + '...'
+        return '{}, Title: {}'.format(super(Book, self).__str__(), title)

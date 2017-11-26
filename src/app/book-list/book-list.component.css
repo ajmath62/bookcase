@@ -1,0 +1,15 @@
+/* AJK TODO the formatting is extending to other components */
+#parent {
+  display: inline-block;
+  padding: 15px;
+  border: 3px solid black;
+}
+
+.book {
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.book.selected {
+  background-color: aqua;
+}

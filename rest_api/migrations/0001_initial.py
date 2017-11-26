@@ -23,7 +23,7 @@ class Migration(migrations.Migration):
                 ('archived_on', models.DateTimeField(null=True)),
                 ('title', models.CharField(max_length=1024)),
                 ('author', models.CharField(blank=True, max_length=1024)),
-                ('location', models.PositiveIntegerField(null=True)),
+                ('location', models.IntegerField(db_index=True, null=True, unique=True)),
             ],
             options={
                 'abstract': False,

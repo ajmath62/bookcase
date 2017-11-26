@@ -1,3 +1,4 @@
-<app-book-list *ngIf='mode==="list"' [books]='books' (mode)='mode=$event' (selection)='selectBook($event)'></app-book-list>
+<app-book-list [books]='books' [selection]='selectedIndex' (mode)='mode=$event' (selectionChange)='selectBook($event)'></app-book-list>
+<!--AJK TODO I can't quite get the above to work as two-way binding for selection :/-->
 <app-book-detail *ngIf='mode==="detail"' [book]='selectedBook' (action)='detailHandler($event)'></app-book-detail>
 <app-book-create *ngIf='mode==="add"' (mode)='mode=$event' (book)='newBook($event)'></app-book-create>

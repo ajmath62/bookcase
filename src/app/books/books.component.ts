@@ -46,7 +46,7 @@ export class BooksComponent implements OnInit {
     let storedBook: Book = this.books[this.selectedIndex]
     switch (action) {
       case 'save':
-        this.bookService.updateBook(book).subscribe(() => this.mode = 'list')
+        this.bookService.updateBook(book).subscribe()
         storedBook.title = book.title
         storedBook.author = book.author
         break;
@@ -59,6 +59,8 @@ export class BooksComponent implements OnInit {
         break;
     }
     this.mode = 'list'
+    this.selectedBook = null
+    this.selectedIndex = null
   }
 
   ngOnInit() {

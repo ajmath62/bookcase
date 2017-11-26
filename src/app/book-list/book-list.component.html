@@ -1,13 +1,16 @@
-<div *ngIf='books.length'>
-  <h2>Number of books: {{ books.length }}</h2>
-  <h2>These are the books:</h2>
-  <ul>
-    <li *ngFor='let book of books; index as i'>
-      <p (click)='onSelect(i)'>{{ book.title | uppercase}}</p>
-    </li>
-  </ul>
-</div>
-<div *ngIf='!books.length'>
-  <h2>There are no books. Click below to add a new book.</h2>
-</div>
-<button (click)='mode.emit("add")'>Add book</button>
+<span id='parent'>
+  <div *ngIf='books.length'>
+    <h2>Number of books: {{ books.length }}</h2>
+    <h2>These are the books:</h2>
+    <ul>
+      <li *ngFor='let book of books; index as i'>
+        <span (click)='onSelect(i)' class='book' [class.selected]='selection===i'>{{ book.title | uppercase}}</span>
+        <br/><br/>
+      </li>
+    </ul>
+  </div>
+  <div *ngIf='!books.length'>
+    <h2>There are no books. Click below to add a new book.</h2>
+  </div>
+  <button (click)='mode.emit("add")'>Add book</button>
+</span>

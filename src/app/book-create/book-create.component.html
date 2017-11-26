@@ -3,7 +3,7 @@
     <!--AJK TODO get frontend validation to work-->
     <label>Title<input [(ngModel)]='newBook.title' name='title' required/></label><br/>
     <label>Author<input [(ngModel)]='newBook.author' name='author'/></label><br/>
-    <label>Location<input [(ngModel)]='newBook.location' name='location'/></label><br/>
+    <!--AJK TODO after creation, auto-select the new book so the user can reposition it-->
     <button type='submit'>Add</button>
   </form>
   <button (click)='mode.emit("list")'>Cancel</button>

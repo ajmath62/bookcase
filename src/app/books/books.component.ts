@@ -36,7 +36,6 @@ export class BooksComponent implements OnInit {
       id: book.id,
       title: book.title,
       author: book.author,
-      location: book.location
     }
     switch (action) {
       case 'select':

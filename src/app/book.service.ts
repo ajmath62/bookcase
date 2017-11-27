@@ -13,6 +13,7 @@ export class BookService {
   private createUrl: string = this.baseUrl
   private editUrl: (id: number) => string = (id: number) => `${this.detailUrl(id)}edit/`
   private deleteUrl: (id: number) => string = (id: number) => `${this.detailUrl(id)}delete/`
+  private moveUrl: (id: number) => string = (id: number) => `${this.detailUrl(id)}place-after/`
 
   constructor(private http: HttpClient) { }
 
@@ -30,6 +31,10 @@ export class BookService {
 
   deleteBook(id: number): Observable<any> {
     return this.http.post(this.deleteUrl(id), {})
+  }
+
+  moveBook(id: number, afterId: number): Observable<any> {
+    return this.http.post(this.moveUrl(id), {after: afterId})
   }
 
 }

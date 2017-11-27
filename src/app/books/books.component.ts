@@ -44,6 +44,7 @@ export class BooksComponent implements OnInit {
         this.mode = 'detail'
         break;
       case 'move':
+        this.bookService.moveBook(this.books[this.selectedIndex].id, this.books[index].id).subscribe()
         if (index === this.selectedIndex) break;
         else if (index < this.selectedIndex) {
           // AJK TODO multiline this
